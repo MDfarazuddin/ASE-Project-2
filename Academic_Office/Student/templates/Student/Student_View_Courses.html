@@ -1,0 +1,30 @@
+{% extends 'Student_View_Base_Layout.html' %}
+{% load static from staticfiles %}
+{%block content2%}
+              <a href="" class = "brand-logo">{{ a_student.S_id }}</a>
+{% endblock %}
+{% block content3 %}
+<li><a href="{% url 'logout1' %}" class ="btn amber lighten-1 waves-effect">Logout</a></li>
+{% endblock %}
+{%block content%}
+        <div class="container">
+            <h2>
+              {{ a_student.S_name }}
+            </h2>
+            <ul class="collection with-header">
+
+              <li class="collection-header">
+                <h4>Your Courses</h4>
+              </li>
+              {% for course in a_student.S_courses.all %}
+                <li class="collection-item avatar hoverable">
+                  <a href="#" class=""><i class="material-icons  circle blue">library_books</i></a>
+                  <span class="title">{{course}}</span>
+                  <!-- <p class="grey-text">{{student.S_id}}</p> -->
+                  <!-- <a href="#" class="secondary-content"> -->
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+
+{% endblock %}

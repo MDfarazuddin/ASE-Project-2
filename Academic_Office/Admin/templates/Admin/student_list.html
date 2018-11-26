@@ -1,0 +1,25 @@
+{% extends 'list.html' %}
+  {% block content %}
+  <div class="container">
+      <h2>
+        Student List
+      </h2>
+      <ul class="collection with-header">
+
+        <li class="collection-header">
+          <h4>Students</h4>
+        </li>
+        {% for student in all_students %}
+          <li class="collection-item avatar hoverable">
+            <a href="{{ student.slug  }}" class=""><i class="material-icons  circle blue">person</i></a>
+            <span class="title">{{student.S_name}}</span>
+            <p class="grey-text">{{student.S_id}}</p>
+            <!-- <a href="#" class="secondary-content"> -->
+              <a href="{% url 'make_email' slug=student.slug %}" class="secondary-content">
+              <i class="material-icons blue-text">email</i>
+            </a>
+          </li>
+      {% endfor %}
+      </ul>
+  </div>
+  {%  endblock  %}

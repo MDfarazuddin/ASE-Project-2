@@ -1,0 +1,44 @@
+{% extends 'Admin_View_Base_Layout.html' %}
+{% load static from staticfiles %}
+{% block content %}
+        <div class="container center">
+            <h3>Profiles</h3>
+            <div class ="row">
+                <a href="{% url 'student_list' %}">
+                  <div class="col s12 l4">
+                    <div class="card  green  hoverable">
+                      <div class="card-image">
+                        <img src="{% static 'Admin/students.png' %}" alt="">
+                        <a href="" class="halfway-fab btn-floating blue pulse ">
+                            <i class="material-icons ">person</i>
+                        </a>
+                      </div>
+                        <div class="card-content">
+                          <p class="center">
+                                <h5 class="white-text">Students</h5>
+                          </p>
+                        </div>
+                  </div>
+                  </div>
+                </a>
+
+                <a href="{% url 'teacher_list' %}">
+                  <div class="col s12 l4">
+                    <div class="card  orange accent-3 hoverable">
+                      <div class="card-image">
+                        <img src="{% static 'Admin/view_teachers.jpg' %}" alt="">
+                        <a href="" class="halfway-fab btn-floating blue darken-1 pulse ">
+                            <i class="material-icons ">person</i>
+                        </a>
+                      </div>
+                        <div class="card-content">
+                          <p class="center">
+                                <h5 class="white-text">Teachers</h5>
+                          </p>
+                        </div>
+                  </div>
+                  </div>
+                </a>
+</div>
+</div>
+{% endblock %}

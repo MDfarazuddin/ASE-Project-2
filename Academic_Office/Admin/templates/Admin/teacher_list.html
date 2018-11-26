@@ -1,0 +1,24 @@
+{% extends 'list.html' %}
+  {% block content %}
+      <div class="container">
+          <h2>
+            Teacher List
+          </h2>
+          <ul class="collection with-header">
+
+            <li class="collection-header">
+              <h4 class=>Teachers</h4>
+            </li>
+            {% for teacher in all_teachers %}
+              <li class="collection-item avatar hoverable">
+                <a href="{{ teacher.slug  }}" class=""><i class="material-icons  circle blue">person</i></a>
+                <span class="title">{{teacher.T_name}}</span>
+                <p class="grey-text">{{teacher.T_id}}</p>
+                <a href="{% url 'make_email' slug=teacher.slug %}" class="secondary-content">
+                  <i class="material-icons blue-text">email</i>
+                </a>
+              </li>
+          {% endfor %}
+          </ul>
+      </div>
+  {%  endblock  %}
