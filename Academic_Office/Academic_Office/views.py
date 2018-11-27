@@ -7,7 +7,7 @@ from Admin.models import Admins
 
 def home(request):
 	return render(request,'Academic_Office/Home_page.html')
-	
+
 def Student_login(request):
 	form = Login_student()
 	if request.method == 'POST':
