@@ -9,10 +9,10 @@ class Register_student(forms.Form):
     re_password=forms.CharField(widget=forms.PasswordInput(attrs={'placeholder':'re_password'}))
     CHOICES = (
         ('1', 'ASE-1'),
-        ('2', 'Mathematics 3'),
+        ('2','DSAA'),
         ('3', 'Algorithms'),
-        ('4','Operating Systems'),
-        ('5','DSAA'),
+        ('4', 'Mathematics 3'),
+        ('5','Operating Systems'),
         ('6','Communiction Skills 3'),
     )
     multiple_checkboxes = forms.MultipleChoiceField(choices=CHOICES, widget=forms.CheckboxSelectMultiple)
