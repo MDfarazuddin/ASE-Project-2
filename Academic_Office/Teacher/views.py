@@ -6,8 +6,19 @@ from . models import Teachers
 from Student.models import Students,Courses
 
 def Teacher_Profile(request,slug):
-	a_teacher = Teachers.objects.get(slug=slug)
-	return render(request,'Teacher/Teacher_View.html',{"a_teacher":a_teacher})
+	try:
+		request.session['T_id']
+		a_teacher = Teachers.objects.get(slug=slug)
+		return render(request,'Teacher/Teacher_View.html',{"a_teacher":a_teacher})
+	except:
+		pass
+	try:
+		request.session['A_id']
+		a_teacher = Teachers.objects.get(slug=slug)
+		return render(request,'Teacher/Teacher_View.html',{"a_teacher":a_teacher})
+	except:
+		return HttpResponse('not logged in techer')
+		# pass
 
 def Show_students(request,slug):
 	a_teacher = Teachers.objects.get(slug=slug)
