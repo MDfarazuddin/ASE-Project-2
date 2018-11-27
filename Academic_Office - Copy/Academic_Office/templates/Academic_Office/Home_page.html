@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Home page</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="../../dist/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  </head>
+<body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">ASE Group16</a>
+
+      <ul id="nav-mobile" class="sidenav">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center orange-text">Academic <span class="blue-text"> Office </span> </h1>
+      <div class="row center">
+        <h4 class="header col s12 light ">A web-application to simplify work of<br>  Educational  Institutes</h4>
+      </div>
+      <br><br>
+           <div class="row center">
+        <!-- <a href="" id="download-button" class="btn-large waves-effect waves-light orange">lOGIN</a> -->
+        <h3>Login as</h3>
+  <ul class="collapsible">
+    <li>
+      <div class="collapsible-header grey"><i class="material-icons">person</i>Admin</div>
+      <div class="collapsible-body grey accent-5"><span><a href="{% url 'login3' %}" class="btn orange">Admin login</a></span></div>
+    </li>
+    <li>
+      <div class="collapsible-header red"><i class="material-icons">person</i>Teacher</div>
+      <div class="collapsible-body red accent-5"><span><a href="{% url 'login2' %}" class="btn orange">Teacher login</a></span></div>
+    </li>
+    <li>
+      <div class="collapsible-header blue "><i class="material-icons">person</i>Student</div>
+      <div class="collapsible-body blue accent-5"><span><a href="{% url 'login1' %}" class="btn orange">Student login</a></span></div>
+    </li>
+  </ul>
+
+      </div>
+      <br><br>
+
+    </div>
+  </div>
+
+
+
+  <footer class="page-footer orange">
+    <div class="container">
+<div class="row">
+  <div class="col l6 s12">
+    <h5 class="white-text">Academic Office (ASE Group 16)</h5>
+    <p class="grey-text text-lighten-4">
+      A web app to automate the tasks of academic office,
+
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat.
+    </p>
+  </div>
+  <div class="col l4 offset-l2 s12">
+    <h5 class="white-text">Actors</h5>
+    <ul>
+      <li><a class="grey-text text-lighten-3" href="#!">Admin</a></li>
+      <li><a class="grey-text text-lighten-3" href="#!">Teacher</a></li>
+      <li><a class="grey-text text-lighten-3" href="#!">Student</a></li>
+      <li><a class="grey-text text-lighten-3" href="#!">Groups</a></li>
+    </ul>
+  </div>
+</div>
+</div>
+<div class="footer-copyright">
+<div class="container">
+© 2018 Group 16
+<a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+</div>
+</div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <script>
+    $(document).ready(function(){
+    $('.collapsible').collapsible();
+    });
+    </script>
+
+  </body>
+</html>

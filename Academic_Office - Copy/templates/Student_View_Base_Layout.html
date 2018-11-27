@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+
+    <title>Student View</title>
+    <style>
+        img{
+          height:200px;
+        }
+
+        @media only screen and (max-width: 1000px) {
+          img{
+            height:500px;
+          }
+        }
+    </style>
+  </head>
+  <body class="grey lighten-2">
+      <div class="navbar-fixed">
+          <nav class="nav-wrapper indigo accent-3">
+            <div class="container">
+              {% block content2 %}
+              {% endblock %}
+              <a href="" class="sidenav-trigger" data-target="sidebar_id">
+                <i class="material-icons">menu</i>
+              </a>
+              <ul class ="right hide-on-med-and-down">
+                <li ><a href="#" class="btn-floating blue darken-2 waves-effect"><i class="material-icons  large">person</i></a></li>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">CONTACT</a></li>
+                {% block content3 %}
+                {% endblock %}
+              </ul>
+            </div>
+          </nav>
+        </div>
+        <ul class="sidenav grey lighten-3" id ="sidebar_id">
+          <li><div class="user-view">
+            <div class="background">
+              <img src="images/office.jpg">
+            </div>
+            <a href="#user"><img class="circle" src="images/yuna.jpg"></a>
+            {% block content4 %}
+            {% endblock %}
+          <li><a href="#!"><i class="material-icons">home</i>Home</a></li>
+          <li><a href="#!">Contact</a></li>
+          <li><div class="divider"></div></li>
+          <li><a href="#!">About</a></li>
+          {% block content5%}
+          {% endblock %}
+
+        </ul>
+        {% block content %}
+        {% endblock %}
+        <footer class="page-footer blue">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Academic Office (ASE Group 16)</h5>
+                <p class="grey-text text-lighten-4">
+                  A web app to automate the tasks of academic office,
+
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat.
+                </p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Actors</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#!">Admin</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Teacher</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Student</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Groups</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2018 Group 16
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+          </div>
+        </footer>
+      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+      <script>
+      $(document).ready(function(){
+        $('.sidenav').sidenav();
+      })
+      </script>
+  </body>
+</html>
