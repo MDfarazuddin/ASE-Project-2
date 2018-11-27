@@ -2,10 +2,27 @@ from django.db import models
 from django.core.validators import MinValueValidator,MaxValueValidator
 # Create your models here.
 
+
+
+class Book(models.Model):
+    title = models.CharField(max_length=100)
+    author = models.CharField(max_length=100)
+    pdf = models.FileField(upload_to='books/pdfs/')
+    cover = models.ImageField(upload_to='books/covers/', null=True, blank=True)
+
+    def __str__(self):
+        return self.title
+
+    def delete(self, *args, **kwargs):
+        self.pdf.delete()
+        self.cover.delete()
+        super().delete(*args, **kwargs)
+
 class Courses(models.Model):
     C_id = models.CharField(max_length=3 ,primary_key=True)
     C_name = models.CharField(max_length=15)
     C_credits=models.PositiveIntegerField(validators=[MinValueValidator(1),MaxValueValidator(5)])
+    C_books = models.ManyToManyField(Book)
     def __str__(self):
         return self.C_name
 
