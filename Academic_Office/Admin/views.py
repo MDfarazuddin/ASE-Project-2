@@ -78,7 +78,7 @@ def teacher_list(request):
 
 def student_list(request):
 	all_students = Students.objects.all()
-	return render(request,'Admin/student_list.html',{"all_students":all_students	})
+	return render(request,'Admin/student_list.html',{"all_students":all_students})
 
 def make_email(request,slug):
 	if Teachers.objects.filter(slug=slug).count() == 1:

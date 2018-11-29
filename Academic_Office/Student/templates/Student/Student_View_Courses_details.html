@@ -1,0 +1,10 @@
+{% extends 'Student_View_Base_Layout.html' %}
+{% load static from staticfiles %}
+{%block content2%}
+              <a href="" class = "brand-logo">{{ a_student.S_id }}</a>
+{% endblock %}
+{% block content3 %}
+<li><a href="{% url 'logout1' %}" class ="btn amber lighten-1 waves-effect">Logout</a></li>
+{% endblock %}
+{%block content%}
+{% endblock %}
