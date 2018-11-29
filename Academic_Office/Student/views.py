@@ -15,12 +15,9 @@ def Student_profile(request,slug):
 		return render(request,'Student/Student_View.html',{"a_student":a_student})
 	except:
 		return HttpResponse('not logged in')
+
 def Student_courses(request,slug):
-	try:
-		 request.session['S_id']
-	except:
-		request.session['A_id']
-		a_student = Students.objects.get(slug=slug)
+	a_student = Students.objects.get(slug=slug)
 	return render(request,'Student/Student_View_Courses.html',{"a_student":a_student})
 
 def Student_grade_sheet(request):
