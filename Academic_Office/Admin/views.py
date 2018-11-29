@@ -4,8 +4,14 @@ from Teacher.models import Teachers
 from Student.models import Students,Courses
 from django.core.mail import EmailMessage
 from .forms import Register_student,Register_teacher
-# Create your views here.
+
+
+
+
+
+
 course = Courses.objects.get(C_id = '000')
+
 def admin_home(request):
 	try:
 		request.session['A_id']
@@ -16,8 +22,6 @@ def admin_home(request):
 def admin_view_profile(request):
 	return render(request,'Admin/Admin_View_View_Profiles.html')
 
-# def admin_add_teacher(request):
-# 	return	render(request,'Admin/Admin_View_Add_Teacher.html')
 
 def admin_add_teacher(request):
 	form=Register_teacher()
@@ -35,12 +39,6 @@ def admin_add_teacher(request):
 			return render(request,'Admin/Admin_View_Add_Teacher.html',{'form':form})
 	return render(request,'Admin/Admin_View_Add_Teacher.html',{'form':form})
 
-
-
-# def admin_add_student(request):
-#
-# 	return render(request,'Admin/Admin_View_Add_Student.html')
-#
 
 def admin_add_student(request):
 	form=Register_student()
@@ -76,13 +74,11 @@ def admin_add_student(request):
 def teacher_list(request):
 	all_teachers = Teachers.objects.all()
 	return render(request,'Admin/teacher_list.html',{"all_teachers":all_teachers})
-	# return HttpResponse("dfjkhfjk")
 
 
 def student_list(request):
 	all_students = Students.objects.all()
 	return render(request,'Admin/student_list.html',{"all_students":all_students	})
-	# return HttpResponse("dfjkhfjk")
 
 def make_email(request,slug):
 	if Teachers.objects.filter(slug=slug).count() == 1:

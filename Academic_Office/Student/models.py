@@ -11,7 +11,7 @@ class Courses(models.Model):
     C_credits=models.PositiveIntegerField(validators=[MinValueValidator(1),MaxValueValidator(5)])
     # C_books = models.ManyToManyField(Book,blank=True)
     def __str__(self):
-        return self.C_id
+        return self.C_name
 
 class Book(models.Model): 
     B_cid = models.ForeignKey(Courses,on_delete = models.CASCADE)
