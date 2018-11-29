@@ -1,0 +1,19 @@
+{% extends 'Admin_View_Base_Layout.html' %}
+{% load static from staticfiles %}
+{% block content %}
+  <div class="container">
+
+          <form action="" method="POST">
+            {% csrf_token %}
+          Teacher name:  {{ form.T_name }}
+          Teacher id:  {{ form.T_id }}
+            Email: {{ form.T_email }}
+            Password{{ form.password }}
+            Confirm Password: {{ form.re_password }}
+            <!-- <button type="submit" name="button" class="btn grey black-text">Create</button> -->
+            <input type="submit" name="" id="" class="btn grey black-text" value="create">
+            <br><br><br>
+          </form>
+
+  </div>
+{% endblock %}

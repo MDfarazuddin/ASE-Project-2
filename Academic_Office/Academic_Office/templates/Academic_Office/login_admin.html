@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+    $(document).ready(function(){
+    $('.collapsible').collapsible();
+    });
+    </script>
+
+</head>
+
+<body class="grey lighten-2">
+    <nav class="white black-text z-depth-2">
+        <div class="container center">
+            <div class="nav-wrapper container">ACADEMIC OFFICE
+                <ul class="left">
+                    <li>
+                        <a href="#login" class="waves-effect">Logo</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br>
+
+    <div class="container">
+    <h4 class="center">Login</h4>
+    <ul class="collapsible popout">
+
+        <li><div class="collapsible-header grey accent-2">Admin</div>
+            <div class="collapsible-body white">
+                    <div class="container">
+
+                        <form class="col s12 " method="POST" action="">
+                          {% csrf_token %}
+                            <div class='row'>
+
+                            </div>
+                            <div class='row'>
+                                <div class='input-field col s12'>
+                                    <i class="material-icons prefix">person</i>
+                                    <!-- <input class='validate' type='email' name='email' /> -->
+                                    {{ form2.A_id }}
+                                    <label for='email' class="right">
+                                        <div>Admin ID</div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class='row'>
+
+                                <div class='input-field col s12'>
+                                    <i class="material-icons prefix">lock</i>
+                                    <!-- <input class='validate' type='password' name='password' /> -->
+                                      {{ form2.password }}
+                                    <label for='password'>Password</label>
+                                </div>
+                                <label style='float: right;'>
+                                </label>
+                            </div>
+
+
+                            <div class='row'>
+                                <input type="submit" value="Login" class="col s12 btn btn-large waves-effect indigo">
+                            </div>
+                        </form>
+                    </div>
+
+            </div>
+        </li>
+        </ul>
+</div>
+<br><br><br><br><br><br>
+
+<footer class="page-footer grey">
+        <div class="container">
+<div class="row">
+  <div class="col l6 s12">
+    <h5 class="black-text">Academic Office (ASE Group 16)</h5>
+    <p class="black-text text-lighten-4">
+      A web app to automate the tasks of academic office,
+
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat.
+    </p>
+  </div>
+  <div class="col l4 offset-l2 s12">
+    <h5 class="black-text">Actors</h5>
+    <ul>
+      <li><a class="black-text text-lighten-3" href="#!">Admin</a></li>
+      <li><a class="black-text text-lighten-3" href="#!">Teacher</a></li>
+      <li><a class="black-text text-lighten-3" href="#!">Student</a></li>
+      <li><a class="black-text text-lighten-3" href="#!">Groups</a></li>
+    </ul>
+  </div>
+</div>
+</div>
+<div class="footer-copyright grey darken-2">
+<div class="container ">
+© 2018 Group 16
+<a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+</div>
+</div>
+</footer>
+</body>
+</html>

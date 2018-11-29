@@ -1,0 +1,25 @@
+
+{% extends 'Teacher_View_Base_Layout.html' %}
+  {% block content3 %}
+  <li><a href="{% url 'logout2' %}" class ="btn amber lighten-1 waves-effect">Logout</a></li>
+  {% endblock %}
+  {%block content%}
+
+      <div class="container">
+          <h2>
+              Students
+          </h2>
+          <ul class="collection with-header">
+
+            <li class="collection-header">
+              <h4 class>Students Enrolled</h4>
+            </li>
+            {% for x in name %}
+              <li class="collection-item avatar hoverable">
+                <a href="{{ teacher.slug  }}" class=""><i class="material-icons  circle blue">person</i></a>
+                <span class="title">{{x}}</span>
+              </li>
+          {% endfor %}
+          </ul>
+      </div>
+  {%  endblock  %}

@@ -1,0 +1,6 @@
+
+*.pyc
+Academic_Office/Academic_Office/_pycache_
+Academic_Office/Admin/_pycache_
+Academic_Office/Student/_pycache_
+Academic_Office/Teacher/_pycache_
