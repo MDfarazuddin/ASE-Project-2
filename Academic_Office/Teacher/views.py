@@ -67,3 +67,23 @@ def delete_book(request, pk):
         book = Book.objects.get(pk=pk)
         book.delete()
     return HttpResponse('deleted')
+
+
+def take_attendance(request,slug):
+
+	class student():
+		def __init__(self):
+			student_name = ''
+			student_id = ''
+	a_teacher = Teachers.objects.get(slug=slug)
+	course = a_teacher.T_course_id.C_id
+	a = Students.objects.all()
+	students_name = []
+	students_id = []
+
+	for x in a:
+		if x.S_courses.filter(C_id = course):
+			students_name.append(x.S_name)
+			students_id.append(x.S_id)
+	dict = {'name':students_name,'id':students_id,'a_teacher':a_teacher}
+	return render(request,'Teacher/Teacher_attendance.html',dict)

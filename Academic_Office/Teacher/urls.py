@@ -9,5 +9,5 @@ urlpatterns = [
     path('C_name/books/upload/', views.upload_book, name='upload_book'),
     path('C_name/books-assignments/list/<slug:slug>', views.book_list, name='book_list'),
     path('books/<int:pk>/', views.delete_book, name='delete_book'),
-
+    path('students/attendance/<slug:slug>',views.take_attendance,name='attendance')
 ]

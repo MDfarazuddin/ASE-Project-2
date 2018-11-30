@@ -1,0 +1,47 @@
+{% extends 'Teacher_View_Base_Layout.html' %}
+{% load static from staticfiles %}
+{%block content5%}
+<a href="" class = "brand-logo  ">Course: {{a_teacher.T_course_id.C_name}}</a>
+{%endblock%}
+{%block content2%}
+<li><a href="{% url 'logout2' %}" class ="btn amber lighten-1 waves-effect">Logout</a></li>
+{% endblock %}
+
+{%block content4%}
+<a href=""><span class="white-text name">{{a_teacher.T_name}}</span></a>
+<a href=""><span class="white-text email">{{a_teacher.T_email}}</span></a>
+{%endblock%}
+
+{% block content3 %}
+<li><a class="waves-effect" href="{% url 'logout2' %}">Logout</a></li>
+{%endblock%}
+  {% block content %}
+<div class="container center">
+            <h3 class=""><u>{{ a_teacher.T_course_id}}</u>: Attendance</h3>
+           	<form>
+           		 <input type="" class="btn red datepicker" value="click to Set Date">
+           	</form>
+              <div class="row">
+              		<table>
+              			<th>Name</th>
+              			<th>Roll no</th>
+              			<th>Date</th>
+              			<th>Present</th>
+              			<th>Absent</th>
+              		<tbody>
+              			<tr>
+              			{% for name,id in name,id %}
+              			<td>{{ name }}</td>
+              			<td>{{id}}</td>
+              			<td></td>
+              			<td><input type="submit" class="btn  blue " value="Present"></td>
+              			<td><input type="submit" class="btn red" value="absent"></td>
+              			</tr>
+              			{% endfor %}
+              		</tbody>
+              		</table>
+              </div>
+
+        </div>
+
+  {% endblock %}

@@ -18,7 +18,7 @@
               </li>
               {% for course in a_student.S_courses.all %}
                 <li class="collection-item avatar hoverable">
-                  <a href="{% url 'student_course_page' %}" class=""><i class="material-icons  circle blue">library_books</i></a>
+                  <a href="{% url 'student_course_page' course.C_id %}" class=""><i class="material-icons  circle blue">library_books</i></a>
                   <span class="title">{{course}}</span>
                   <!-- <p class="grey-text">{{student.S_id}}</p> -->
                   <!-- <a href="#" class="secondary-content"> -->
