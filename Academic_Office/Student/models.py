@@ -2,13 +2,18 @@ from django.db import models
 from django.core.validators import MinValueValidator,MaxValueValidator
 # Create your models here.
 
-
+class Assignment(models.Model):
+    A_id = models.CharField(max_length=3,primary_key=True)
+    A_max_marks = models.CharField(max_length=3,null=True,blank=True)
+    A_marks = models.CharField(max_length=3,null=True,blank=True)
+    A_weightage = models.CharField(max_length=3,null=True,blank=True)
 
 
 class Courses(models.Model):
     C_id = models.CharField(max_length=3 ,primary_key=True)
     C_name = models.CharField(max_length=15)
     C_credits=models.PositiveIntegerField(validators=[MinValueValidator(1),MaxValueValidator(5)])
+    C_assignments = models.ManyToManyField(Assignment)
     # C_books = models.ManyToManyField(Book,blank=True)
     def __str__(self):
         return self.C_name

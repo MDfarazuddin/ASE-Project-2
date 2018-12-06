@@ -3,7 +3,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 
 from . models import Teachers
-from Student.models import Students,Courses,Book
+from Student.models import Students,Courses,Book,Assignment
 from .forms import BookForm
 
 def Teacher_Profile(request,slug):
@@ -87,3 +87,4 @@ def take_attendance(request,slug):
 			students_id.append(x.S_id)
 	dict = {'name':students_name,'id':students_id,'a_teacher':a_teacher}
 	return render(request,'Teacher/Teacher_attendance.html',dict)
+
