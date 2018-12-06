@@ -7,10 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
-  <title>{% block title %}My Site{% endblock %}</title>
+  <title></title>
 </head>
 <body style="background-color:#E0E0E0">
-  <nav class="navbar navbar-expand-lg navbar-light mb-4" style="background-color:#FF1744">
+  <nav class="navbar navbar-expand-lg navbar-light mb-4" style="background-color:#3d5afe">
     <div class="container">
       <a class="navbar-brand" href="{% url 'home' %}">Course Books</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,7 +27,7 @@
       <div class="col-lg-10 col-md-12">
         <div class="card mb-4">
           <div class="card-body">
-            <h2> Books</h2>
+            <h2><u>{{ course.C_name }}</u>: Books and Assignments</h2>
 <table class="table mb-0">
     <thead>
       <tr>
@@ -35,7 +35,6 @@
         <th>Title</th>
         <th>Author</th>
         <th>Download</th>
-        <th>Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -56,12 +55,6 @@
               Download PDF
             </a>
           </td>
-          <td>
-            <form method="post" action="{% url 'delete_book' book.pk %}">
-              {% csrf_token %}
-              <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-            </form>
-          </td>
         </tr>
         
       {% endfor %}
@@ -72,7 +65,7 @@
 </div>
 </div>
 </div>
-<footer class="page-footer font-small " style="background-color:#F44336">
+<footer class="page-footer font-small " style="background-color:#3d5afe">
 <br>
 <div class="container">
 <div class="row">
@@ -90,7 +83,7 @@ consequat.
 <div class="col l4 offset-l2 s12">
 <h5 class="black-text">Actors</h5><hr>
 <ul>
-<li><a class="black-text text-lighten-3" href="#!">Admin</a></li>
+<li><a class="black-text text-lighten-3 black" href="#!">Admin</a></li>
 <li><a class="black-text text-lighten-3" href="#!">Teacher</a></li>
 <li><a class="black-text text-lighten-3" href="#!">Student</a></li>
 <li><a class="black-text text-lighten-3" href="#!">Groups</a></li>

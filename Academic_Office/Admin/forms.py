@@ -1,5 +1,6 @@
 from django import forms
-
+from Student.models import Courses
+from Teacher.models import *
 
 class Register_student(forms.Form):
     S_name=forms.CharField(max_length='50',widget=forms.TextInput(attrs={'placeholder':'student_name'}))
@@ -7,22 +8,15 @@ class Register_student(forms.Form):
     S_email=forms.EmailField(widget=forms.TextInput(attrs={'placeholder':'Email'}))
     password=forms.CharField(widget=forms.PasswordInput(attrs={'placeholder':'password'}))
     re_password=forms.CharField(widget=forms.PasswordInput(attrs={'placeholder':'re_password'}))
-    CHOICES = (
-        ('1', 'ASE-1'),
-        ('2','DSAA'),
-        ('3', 'Algorithms'),
-        ('4', 'Mathematics 3'),
-        ('5','Operating Systems'),
-        ('6','Communiction Skills 3'),
-    )
+    all_courses = Courses.objects.all()
+    CHOICES = []
+    for i in range(len(all_courses)):
+        CHOICES.append((i,all_courses[i]))
     multiple_checkboxes = forms.MultipleChoiceField(choices=CHOICES, widget=forms.CheckboxSelectMultiple)
 
-
-
-
-class Register_teacher(forms.Form):
-    T_name=forms.CharField(max_length='50',widget=forms.TextInput(attrs={'placeholder':'student_name'}))
-    T_id=forms.CharField(max_length='10',widget=forms.TextInput(attrs={'placeholder':'username'}))
-    T_email=forms.EmailField(widget=forms.TextInput(attrs={'placeholder':'Email'}))
+class Register_teacher(forms.ModelForm):
     password=forms.CharField(widget=forms.PasswordInput(attrs={'placeholder':'password'}))
     re_password=forms.CharField(widget=forms.PasswordInput(attrs={'placeholder':'re_password'}))
+    class Meta:
+        model = Teachers
+        fields = ('T_id','T_name','T_email','T_course_id',)

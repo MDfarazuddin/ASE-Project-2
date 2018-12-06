@@ -3,7 +3,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 
 from . models import Teachers
-from Student.models import Students,Courses,Book
+from Student.models import Students,Courses,Book,Assignment
 from .forms import BookForm
 
 def Teacher_Profile(request,slug):
@@ -36,12 +36,14 @@ def Show_students(request,slug):
 
 
 
-def Course_contents(request):
-	return render(request,'Teacher/Teacher_course_contents.html')
+def Course_contents(request,slug):
+	course= Courses.objects.get(C_id=slug)
+	return render(request,'Teacher/Teacher_course_contents.html',{'courses':course})
 
 
-def book_list(request):
-    books = Book.objects.all()
+def book_list(request,slug):
+    books = Book.objects.filter(B_cid=slug)
+    print("\n\n\n\n",Book.objects.filter(B_cid=slug))
     return render(request, 'Teacher/book_list.html', {
         'books': books
     })
@@ -52,7 +54,7 @@ def upload_book(request):
         form = BookForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('book_list')
+            return HttpResponse('uploaded')
     else:
         form = BookForm()
     return render(request, 'Teacher/upload_book.html', {
@@ -64,4 +66,25 @@ def delete_book(request, pk):
     if request.method == 'POST':
         book = Book.objects.get(pk=pk)
         book.delete()
-    return redirect('book_list')
+    return HttpResponse('deleted')
+
+
+def take_attendance(request,slug):
+
+	class student():
+		def __init__(self):
+			student_name = ''
+			student_id = ''
+	a_teacher = Teachers.objects.get(slug=slug)
+	course = a_teacher.T_course_id.C_id
+	a = Students.objects.all()
+	students_name = []
+	students_id = []
+
+	for x in a:
+		if x.S_courses.filter(C_id = course):
+			students_name.append(x.S_name)
+			students_id.append(x.S_id)
+	dict = {'name':students_name,'id':students_id,'a_teacher':a_teacher}
+	return render(request,'Teacher/Teacher_attendance.html',dict)
+
