@@ -9,8 +9,9 @@ import unittest
 def add(a,b):
     return a+b
 
+
 class SuryaTest(unittest.TestCase):
-    def test(self):
+    def test1(self):
         self.assertTrue(True)
     def test2(self):
         self.assertEqual(add(2,3),5)
@@ -20,4 +21,6 @@ class SuryaTest(unittest.TestCase):
     # Make sure to use appropriate assertxxxx(funct(a,b,c,d,...),X)
 
 if __name__ == "__main__":
-    unittest.main()       
+    unittest.main()
+
+# Send me your algorithms soi can put it here and write testcases
