@@ -16,7 +16,7 @@ class Teachers(models.Model):
         return self.T_name
 
 class Announcements(models.Model):
-    T_id = models.ForeignKey(Courses, on_delete=None)
+    T_id = models.ForeignKey(Teachers, on_delete=None)
     T_comment = models.CharField(max_length=1000)
     T_date = models.CharField(max_length=50,default = "Today")
 
