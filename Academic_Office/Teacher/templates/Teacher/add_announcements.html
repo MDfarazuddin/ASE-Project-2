@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>Document</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -13,13 +12,8 @@
     <div class="container">
         <h3>Ask Teacher:</h3>
 
-        <form method="POST" action="{% url 'forum.result' %}">
+        <form method="POST" >
             {% csrf_token %}
-            Name:
-            <input type="text" name='name' />
-            <div class="row">
-
-            </div>
             <div class='row container card hoverable'>
                 <div><i class="material-icons">add_comment</i></div>
                 <div class='input-field col s12'>
@@ -29,23 +23,19 @@
                     <label style='float: right;'>
                         </label>
                 </div>
-             <button class="right btn waves-effect waves-light pulse" type="submit" name="action">Submit
-                    <i class="material-icons right">send</i>
-                  </button>
+                    <input type="submit" />
                 </div>
             </div>
         </form>
         <table>
-            {% for ab in mylist %}
+            {% for i in ab %}
             <tr>
-                <td>{{ab.0}}</td>
-                <td>{{ab.1}}</td>
+                <td>{{i.0}}</td>
+                <td>{{i.1}}</td>
+                <td>{{i.2}}</td>
             </tr>
             {% endfor %}
         </table>
     </div>
-
-    </div>
 </body>
-
 </html>

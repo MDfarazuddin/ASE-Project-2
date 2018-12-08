@@ -1,8 +1,8 @@
 from django.shortcuts import render,redirect
-
+from datetime import datetime
 from django.http import HttpResponse
 
-from . models import Teachers
+from . models import Teachers,Announcements
 from Student.models import Students,Courses,Book,Assignment
 from .forms import BookForm
 
@@ -88,3 +88,15 @@ def take_attendance(request,slug):
 	dict = {'name':students_name,'id':students_id,'a_teacher':a_teacher}
 	return render(request,'Teacher/Teacher_attendance.html',dict)
 
+
+def add_announcements(request,slug):
+	if request.method == 'POST':
+		x = Teachers.objects.get(slug=slug)
+		comment = request.POST('comment')
+		date = str(datetime.now())
+		Announcements.objects.create(T_id = x, T_comment=comment, T_date = date)
+		tid = Announcements.objects.all()
+		return render(request,'Teacher/add_announcements.html', {'ab':tid})
+	else:
+		tid = Announcements.objects.all()
+		return render(request, 'Teacher/add_announcements.html', {'ab': tid})
