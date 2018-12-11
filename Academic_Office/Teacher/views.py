@@ -89,7 +89,7 @@ def take_attendance(request,slug):
 	return render(request,'Teacher/Teacher_attendance.html',dict)
 
 
-def add_announcements(request,slug):
+def add_announcements(request, slug):
 	if request.method == 'POST':
 		x = Teachers.objects.get(slug=slug)
 		comment = request.POST('comment')
