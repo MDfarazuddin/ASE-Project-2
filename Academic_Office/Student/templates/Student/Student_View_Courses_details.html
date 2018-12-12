@@ -1,4 +1,4 @@
-{% extends 'Student_View_Base_Layout.html' %}
+  {% extends 'Student_View_Base_Layout.html' %}
 {% load static from staticfiles %}
 {%block content2%}
               <a href="" class = "brand-logo">{{ a_student.S_id }}</a>
@@ -29,7 +29,7 @@
                   </div>
                 </a>
 
-                <a class="" href="">
+                <a class="" href="{% url 'assignments' a_course.C_id %}">
                   <div class="col s12 l4">
                     <div class="card  blue lighten-1 hoverable">
                       <div class="card-image">

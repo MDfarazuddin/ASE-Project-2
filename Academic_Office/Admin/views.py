@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from Teacher.models import Teachers
-from Student.models import Students,Courses
+from Student.models import *
 from django.core.mail import EmailMessage
 from .forms import Register_student,Register_teacher
-
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .serializer import studentlogserializer,courselogserializer
 
 
 
@@ -35,7 +37,6 @@ def admin_add_teacher(request):
 			return render(request,'Admin/Admin_View_Add_Teacher.html',{'form':form})
 	return render(request,'Admin/Admin_View_Add_Teacher.html',{'form':form})
 
-
 def admin_add_student(request):
 	form=Register_student()
 	if request.method == 'POST':
@@ -51,12 +52,21 @@ def admin_add_student(request):
 			t.save()
 			print(courses)
 			for i in courses:
-				i = "00" + str(i)
+				i = "00" + str(int(i)+1)
 				course = Courses.objects.get(C_id=i)
 				print(course)
 				t.S_courses.add(course)
 			print(t.S_courses.all())
 			t.save()
+			courses_ = t.S_courses.all()
+			for x in courses_ :
+				obj = FinalMarks.objects.create(F_course = x,F_sid = t)
+				obj.save()
+				assignments= Assignment.objects.filter(A_course= x)
+				for y in assignments:
+					obj2 = AssignMarks.objects.create(A_id = y,A_sid = t)
+					obj2.save()
+
 			return render(request,'Admin/Student_created.html')
 		else:
 			return render(request,'Admin/Admin_View_Add_Student.html',{'form':form})
@@ -93,3 +103,25 @@ def send_email(request):
 	email = EmailMessage(subject,body,to=[email])
 	email.send()
 	return render(request,"Admin/Admin_confirm.html")
+
+@api_view()
+def studentsloglist(request):
+	studentlog = Students.objects.all()
+	serializer = studentlogserializer(studentlog,many=True)
+	return Response(serializer.data)
+
+@api_view()
+def studentloglist(request,slug):
+	studentlog = Students.objects.filter(S_id = slug)
+	serializer = studentlogserializer(studentlog,many=True)
+	return Response(serializer.data)
+
+@api_view()
+def courseloglist(request,slug):
+	a=Students.objects.all()
+	studentlog = []
+	for x in a:
+		if x.S_courses.filter(C_id=slug):
+			studentlog.append(x)
+	serializer = courselogserializer(studentlog,many=True)
+	return Response(serializer.data)

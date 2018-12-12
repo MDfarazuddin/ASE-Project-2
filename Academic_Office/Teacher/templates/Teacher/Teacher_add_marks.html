@@ -1,3 +1,4 @@
+
 {% load crispy_forms_tags %}
 {% load static %}
 <!doctype html>
@@ -7,12 +8,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
-  <title></title>
+  <title>{% block title %}My Site{% endblock %}</title>
 </head>
 <body style="background-color:#E0E0E0">
-  <nav class="navbar navbar-expand-lg navbar-light mb-4" style="background-color:#3d5afe">
+  <nav class="navbar navbar-expand-lg navbar-light mb-4" style="background-color:#FF1744">
     <div class="container">
-      <a class="navbar-brand" href="{% url 'home' %}">Grade Sheet</a>
+      <a class="navbar-brand" href="{% url 'home' %}">Add Marks</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -27,38 +28,26 @@
       <div class="col-lg-10 col-md-12">
         <div class="card mb-4">
           <div class="card-body">
-            <h2><u>{{ name }} </u></h2>
-<table class="table mb-0">
-    <thead>
-      <tr>
-        <th>Course</th>
-        <th>Percentage</th>
-        <th>Grade</th>
-      </tr>
-    </thead>
-    <tbody>
-{%for x in grades%} 
-	<tr>
-		<td>{{x.F_course}}</td>
-		<td>{{x.F_marks}}</td>
-		<td>{{x.F_grade}}</td>
-	</tr>
-{%endfor%}
-  <tr>
-    <td>Total</td>
-    <td>CGPA</td>
-    <td>{{cgpa}}</td>
-  </tr>
-    </tbody>
-  </table>
-</div>
-</div>
-</div>
-</div>
-</div>
-<footer class="page-footer font-small " style="background-color:#3d5afe">
+  <h1>Assignment Id :{{ a_id }}</h1> &nbsp; <h2>Max marks :{{ a_max }}</h2>
+<form method="POST">
+    {% csrf_token %}
+    <table>
+    {% for x,y,z in s_info %}
+        <tr>
+            <td>{{ x }}</td>  <td>{{ y }}</td> <td><input type="number" name={{ x }} value={{ z }} min="0" max={{ a_max }}></td>
+        </tr>
+    {% endfor %}
+    </table>
+   <br> <input type="submit" class="btn btn-primary">           
+</form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="page-footer font-small" style="background-color:#F44336">
 <br>
-<div class="container">
+  <div class="container">
 <div class="row">
 <div class="col l6 s12">
 <h5 class="black-text">Academic Office (ASE Group 16)</h5><hr>
@@ -74,7 +63,7 @@ consequat.
 <div class="col l4 offset-l2 s12">
 <h5 class="black-text">Actors</h5><hr>
 <ul>
-<li><a class="black-text text-lighten-3 black" href="#!">Admin</a></li>
+<li><a class="black-text text-lighten-3" href="#!">Admin</a></li>
 <li><a class="black-text text-lighten-3" href="#!">Teacher</a></li>
 <li><a class="black-text text-lighten-3" href="#!">Student</a></li>
 <li><a class="black-text text-lighten-3" href="#!">Groups</a></li>
@@ -89,10 +78,10 @@ consequat.
 </div>
 </div>
 
-</footer>
+  </footer>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -1,0 +1,88 @@
+{% extends 'Teacher_View_Base_Layout.html' %}
+{% load static from staticfiles %}
+{%block content5%}
+<a href="" class = "brand-logo  ">Course: {{course.C_name}}</a>
+{%endblock%}
+{%block content2%}
+<li><a href="{% url 'logout2' %}" class ="btn amber lighten-1 waves-effect">Logout</a></li>
+{% endblock %}
+
+{%block content4%}
+<a href=""><span class="white-text name">{{a_teacher.T_name}}</span></a>
+<a href=""><span class="white-text email">{{a_teacher.T_email}}</span></a>
+{%endblock%}
+
+{% block content3 %}
+<li><a class="waves-effect" href="{% url 'logout2' %}">Logout</a></li>
+{%endblock%}
+  {% block content %}
+
+        <div class="container center">
+            <h3 class=""><u></u>{{course.C_name}}</h3>
+              <div class="row">
+
+                <a class="" href="{% url 'add_assignment' %}">
+                  <div class="col s12 l4">
+                    <div class="card  pink accent-3 hoverable">
+                      <div class="card-image">
+                        <img src="{% static 'Teacher/books.jpg' %}" alt="">
+                        <a href="" class="halfway-fab btn-floating red darken-1 pulse ">
+                            <i class="material-icons ">add</i>
+                        </a>
+                      </div>
+                        <div class="card-content">
+                          <p class="center">
+                                <h5 class="white-text">Add Assignment</h5>
+                          </p>
+                        </div>
+                  </div>
+                  </div>
+                </a>
+
+                              <a class="" href="{% url 'add_weightage' course.C_id  %}">
+                                <div class="col s12 l4">
+                                  <div class="card  pink accent-3 hoverable">
+                                    <div class="card-image">
+                                      <img src="{% static 'Teacher/hw.png' %}" alt="">
+                                      <a href="" class="halfway-fab btn-floating red darken-1 pulse ">
+                                          <i class="material-icons ">add</i>
+                                      </a>
+                                    </div>
+                                      <div class="card-content">
+                                        <p class="center">
+                                              <h5 class="white-text">Add weightage</h5>
+                                        </p>
+                                      </div>
+                                </div>
+                                </div>
+                              </a>
+
+
+
+
+                              <a class="" href="{% url 'add_final_grade' course.C_id  %}">
+                                <div class="col s12 l4">
+                                  <div class="card  pink accent-3 hoverable">
+                                    <div class="card-image">
+                                      <img src="{% static 'Teacher/hw.png' %}" alt="">
+                                      <a href="" class="halfway-fab btn-floating red darken-1 pulse ">
+                                          <i class="material-icons ">add</i>
+                                      </a>
+                                    </div>
+                                      <div class="card-content">
+                                        <p class="center">
+                                              <h5 class="white-text">Final grade policy</h5>
+                                        </p>
+                                      </div>
+                                </div>
+                                </div>
+                              </a>
+
+
+
+
+
+              </div>
+
+        </div>
+  {% endblock %}

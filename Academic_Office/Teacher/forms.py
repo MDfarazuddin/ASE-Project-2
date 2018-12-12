@@ -1,4 +1,5 @@
 from django import forms
+from django.forms import ModelForm
 
 from Student.models import *
 
@@ -10,3 +11,7 @@ class BookForm(forms.ModelForm):
 class Attendance_form(forms.Form):
  	date_time = forms.DateTimeField(required=False)
 
+class AddAssignment(ModelForm):
+    class Meta:
+        model = Assignment
+        fields = "__all__"

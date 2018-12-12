@@ -1,47 +1,116 @@
-{% extends 'Teacher_View_Base_Layout.html' %}
-{% load static from staticfiles %}
-{%block content5%}
-<a href="" class = "brand-logo  ">Course: {{a_teacher.T_course_id.C_name}}</a>
-{%endblock%}
-{%block content2%}
-<li><a href="{% url 'logout2' %}" class ="btn amber lighten-1 waves-effect">Logout</a></li>
-{% endblock %}
 
-{%block content4%}
-<a href=""><span class="white-text name">{{a_teacher.T_name}}</span></a>
-<a href=""><span class="white-text email">{{a_teacher.T_email}}</span></a>
-{%endblock%}
 
-{% block content3 %}
-<li><a class="waves-effect" href="{% url 'logout2' %}">Logout</a></li>
-{%endblock%}
-  {% block content %}
-<div class="container center">
-            <h3 class=""><u>{{ a_teacher.T_course_id}}</u>: Attendance</h3>
-           	<form>
-           		 <input type="" class="btn red datepicker" value="click to Set Date">
-           	</form>
-              <div class="row">
-              		<table>
-              			<th>Name</th>
-              			<th>Roll no</th>
-              			<th>Date</th>
-              			<th>Present</th>
-              			<th>Absent</th>
-              		<tbody>
-              			<tr>
-              			{% for name in name %}
-              			<td>{{ name }}</td>
-              			<td></td>
-              			<td></td>
-              			<td><input type="submit" class="btn  blue " value="Present"></td>
-              			<td><input type="submit" class="btn red" value="absent"></td>
-              			</tr>
-              			{% endfor %}
-              		</tbody>
-              		</table>
-              </div>
 
+
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
+  <title></title>
+</head>
+<body style="background-color:#E0E0E0">
+  <nav class="navbar navbar-expand-lg navbar-light mb-4" style="background-color:#FF1744">
+    <div class="container">
+      <a class="navbar-brand" href="">Take attendence</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 col-md-12">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h2>{{ a_teacher.T_course_id }} : Attendance </h2>
+            {{message}}<br>
+              <form method = "POST">
+            }
+            }
+        {% csrf_token %}
+        <input type="" class="btn red datepicker" value="click to Set Date" id="datepicker" name="datepicker">
+        <div class="row">
+          
+          <table class="table mb-0">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Roll no.</th>
+        <th>Present</th>
+        <th>Absent</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for student in studentlist %}
+
+        <tr>
+          <td>{{ student.S_name }}</td>
+          <td>{{ student.S_id }}</td>
+      <td><input type="radio" value="1" name="{{student.S_name}}" checked></td>
+      <td><input type="radio" value="0" name="{{student.S_name}}" ></td>
+       </tr>
+        
+      {% endfor %}
+    </tbody>
+  </table>          
+        </div><br>
+        <input type="Submit" class="btn btn-primary btn-sm" value="Submit">
+            </form>
+         </div>
         </div>
+      </div>
+    </div>
+  </div>
+  <footer class="page-footer font-small" style="background-color:#F44336">
+<br>
+  <div class="container">
+<div class="row">
+<div class="col l6 s12">
+<h5 class="black-text">Academic Office (ASE Group 16)</h5><hr>
+<p class="black-text text-lighten-4">
+A web app to automate the tasks of academic office,
 
-  {% endblock %}
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat.
+</p>
+</div>
+<div class="col l4 offset-l2 s12">
+<h5 class="black-text">Actors</h5><hr>
+<ul>
+<li><a class="black-text text-lighten-3" href="#!">Admin</a></li>
+<li><a class="black-text text-lighten-3" href="#!">Teacher</a></li>
+<li><a class="black-text text-lighten-3" href="#!">Student</a></li>
+<li><a class="black-text text-lighten-3" href="#!">Groups</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="footer-copyright grey darken-2">
+<div class="container ">
+© 2018 Group 16
+<a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+</div>
+</div>
+
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>
+
+
+
+
+

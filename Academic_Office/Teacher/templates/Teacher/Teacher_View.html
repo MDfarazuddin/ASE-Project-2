@@ -39,7 +39,7 @@
                   </div>
                 </a>
 
-              <a class="modal-trigger" href="#modal1">
+              <a class="" href="{% url 'grades' a_teacher.T_course_id.C_id %}">
                 <div class="col s12 l4">
                   <div class="card deep-purple lighten-1 hoverable">
                     <div class="card-image">
@@ -50,7 +50,7 @@
                     </div>
                       <div class="card-content">
                         <p class="center">
-                              <h5 class="white-text">Set Grading Policy</h5>
+                              <h5 class="white-text">Assignment</h5>
                         </p>
                       </div>
                 </div>
@@ -59,7 +59,7 @@
 
 
 
-                <a class="modal-trigger" href="#modal1">
+                <a class="" href="{% url 'Show_assignments' a_teacher.T_course_id.C_id %}">
                   <div class="col s12 l4">
                     <div class="card  pink accent-3 hoverable">
                       <div class="card-image">
@@ -70,7 +70,7 @@
                       </div>
                         <div class="card-content">
                           <p class="center">
-                                <h5 class="white-text">Enter Grades</h5>
+                                <h5 class="white-text">Enter Marks</h5>
                           </p>
                         </div>
                   </div>
@@ -112,7 +112,7 @@
                   </div>
                 </a>
 
-                <a class="modal-trigger" href="#modal1">
+                <a class="modal-trigger" href="{%url 'add_announcements' a_teacher.slug %}">
                   <div class="col s12 l4">
                     <div class="card  deep-purple lighten-1 hoverable">
                       <div class="card-image">

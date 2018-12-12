@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path ,include
 from . import views
+from Admin import views as k
+# from Teacher import views as tviews
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -31,6 +33,9 @@ urlpatterns = [
     path('Admin/',include('Admin.urls')),
     path('Teachers/',include('Teacher.urls')),
     path('Students/',include('Student.urls')),
+    path('api/',k.studentsloglist,name='api'),
+    path('capi/<slug:slug>',k.courseloglist,name='capi'),
+    path('sapi/<slug:slug>',k.studentloglist,name='sapi')
 ]
 
 if settings.DEBUG:

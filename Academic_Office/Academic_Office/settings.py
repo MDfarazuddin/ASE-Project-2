@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'Teacher',
     'Admin',
     'Student',
+    'rest_framework',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

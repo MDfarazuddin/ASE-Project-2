@@ -37,7 +37,7 @@
                 </a>
 
 
-                <a href="{% url 'student_grades' %}">
+                <a href="{% url 'student_grades' a_student.slug %}">
                   <div class="col s12 l4">
                     <div class="card hoverable grey lighten-1">
                       <div class="card-image">
@@ -54,7 +54,27 @@
                   </div>
                   </div>
                 </a>
-              </div>
+
+                <a href="{% url 'view_announcements' %}">
+                  <div class="col s12 l4">
+                    <div class="card hoverable grey lighten-1">
+                      <div class="card-image">
+                        <img src="{% static 'Teacher/discussion.jpg' %}" alt="">
+                        <a href="" class="halfway-fab btn-floating red darken-1 pulse ">
+                            <i class="material-icons ">format_align_center</i>
+                        </a>
+                      </div>
+                        <div class="card-content">
+                          <p class="center">
+                                <h5 class=""> Announcements</h5>
+                          </p>
+                        </div>
+                  </div>
+                  </div>
+                </a>
+                  </div>
+
+
           </div>
 
 {% endblock %}

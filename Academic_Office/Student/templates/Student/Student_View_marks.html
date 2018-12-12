@@ -1,3 +1,4 @@
+
 {% load crispy_forms_tags %}
 {% load static %}
 <!doctype html>
@@ -12,7 +13,7 @@
 <body style="background-color:#E0E0E0">
   <nav class="navbar navbar-expand-lg navbar-light mb-4" style="background-color:#3d5afe">
     <div class="container">
-      <a class="navbar-brand" href="{% url 'home' %}">Grade Sheet</a>
+      <a class="navbar-brand" href="{% url 'home' %}">Course Books</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -27,28 +28,23 @@
       <div class="col-lg-10 col-md-12">
         <div class="card mb-4">
           <div class="card-body">
-            <h2><u>{{ name }} </u></h2>
+            <h2>Assignment Id: <u>{{a_id}}</u> Max-marks: {{a_max}}</h2>
 <table class="table mb-0">
     <thead>
       <tr>
-        <th>Course</th>
-        <th>Percentage</th>
-        <th>Grade</th>
+        <th>Student Id</th>
+        <th>Student Name</th>
+        <th>Marks</th>
       </tr>
     </thead>
     <tbody>
-{%for x in grades%} 
-	<tr>
-		<td>{{x.F_course}}</td>
-		<td>{{x.F_marks}}</td>
-		<td>{{x.F_grade}}</td>
-	</tr>
-{%endfor%}
-  <tr>
-    <td>Total</td>
-    <td>CGPA</td>
-    <td>{{cgpa}}</td>
-  </tr>
+      {% for x,y,z in s_info %}
+        <tr>
+            <td>{{ x }}</td> 
+            <td>{{ y }}</td> 
+            <td>{{ z }}</td>
+        </tr>
+      {% endfor %}
     </tbody>
   </table>
 </div>
