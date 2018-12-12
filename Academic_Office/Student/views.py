@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import *
-from Teacher.models import Announcements
+from Teacher.models import *
 # Create your views here.
 def Student_profile(request,slug):
 	a_student = Students.objects.get(slug=slug)
@@ -114,3 +114,9 @@ def view_announcements(request):
 	all_comments= Announcements.objects.all()
 	all_comments = all_comments[::-1]
 	return render(request,'Student/student_announcements.html',{'ab':all_comments})	
+
+def view_attendance(request,slug):
+	student = Students.objects.get(S_id = slug)
+	attendance=finalAttendance.objects.filter(student=student)
+	name = student.S_name
+	return render(request,'Student/Student_attendance.html',{'attendance':attendance,'name':name})

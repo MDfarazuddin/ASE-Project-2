@@ -22,18 +22,22 @@ class test_teacher(TestCase):
         try:
             name = Teachers.objects.create(T_id='123',T_course_id_id='123',T_password='123',T_email='test@test.com',T_name='testteacher')
             # Should fail because slug
-            return Announcements.objects.create(T_id = name.T_id,T_date='yesterday',T_comment='hello test fail')
+            return Announcements.objects.create(A_tid = name.T_id,A_date='yesterday',A_comment='hello test fail')
         except:
             return False
     def Create_model_assig(self):
-        return Assignment.objects.create(A_id='test123',A_marks="100",A_max_marks='1000',A_weightage='10')
+        try:
+        # Should fail because A_max_marks should take intezer value not string
+            return Assignment.objects.create(A_id='test123',A_max_marks='1000',A_course='100')
+        except:
+            return False
 
     def test_models(self):
         t = self.Create_model1()
         self.assertFalse(t)
     def test_assignmentmodel(self):
         a = self.Create_model_assig()
-        self.assertTrue(isinstance(a,Assignment))
+        self.assertFalse(isinstance(a,Assignment))
     def test_announcemodel(self):
         ann = self.Create_model_announce()
         self.assertFalse(ann)

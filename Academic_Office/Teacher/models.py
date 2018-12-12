@@ -43,12 +43,9 @@ class DatewiseAttendance(models.Model):
 					self.finallink.present += 1
 		else:
 			self.__lastvalue = self.present
-			if self.present == 0:
-				self.finallink.present -= 1
-			else:
-				self.finallink.present += 1
-		self.finallink.total += 1
-		self.finallink.save()
+			self.finallink.present += self.present
+			self.finallink.total += 1
+			self.finallink.save()
 		
 			
 		super(DatewiseAttendance, self).save(*args, **kwargs)

@@ -4,7 +4,7 @@ from Student.forms import Login_student
 class Testinfforms(TestCase):
     def test_forms(self):
         data = {'S_name':'teststudnet','S_id':'9999','S_email':'test@test.com','password':'testpass','re_password':'testpass'}
-        # Should fail because i havent mentioned any courses
+        # Should fail because i haven't mentioned any courses
         form = Register_student(data=data)
         print("________________________\n")
         print(form.errors)
